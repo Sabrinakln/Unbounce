@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Synergy Building Group - Free Site Feasibility in Narrabundah</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables for consistent branding based on synergybuildinggroup.com.au */
+        :root {
+            --synergy-blue: #0A2E54; /* Main Dark Blue from Synergy site */
+            --synergy-light-blue: #235489; /* A slightly lighter blue for accents */
+            --synergy-gray: #F5F5F5; /* Light gray background */
+            --synergy-dark-gray: #333333; /* Dark gray text */
+            --synergy-white: #ffffff;
+            --synergy-black: #000000;
+
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Open Sans', Arial, sans-serif;
+        }
+
+        /* Reset and base styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            color: var(--synergy-dark-gray); /* Default text color for light sections */
+            overflow-x: hidden;
+            line-height: 1.6;
+            scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--synergy-blue); /* Default link color */
+        }
+
+        /* Utility classes */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .text-center { text-align: center; }
+        .text-right { text-align: right; }
+
+        /* Navigation Bar */
+        .navbar {
+            background: var(--synergy-black);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .synergy-logo-container {
+            color: var(--synergy-white);
+            font-family: var(--font-heading);
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .synergy-logo-lines {
+            font-size: 32px;
+            line-height: 0.5;
+            margin: 0 5px;
+            display: inline-block;
+        }
+
+        .synergy-logo-subtext {
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            margin-left: 10px;
+            color: var(--synergy-white);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            color: var(--synergy-white);
+            font-weight: 600;
+            font-size: 16px;
+            position: relative;
+            padding: 8px 0;
+            transition: all 0.3s ease;
+            font-family: var(--font-heading);
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--synergy-light-blue);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--synergy-light-blue);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            color: var(--synergy-white);
+            font-size: 24px;
+        }
+
+        /* Hero Section with Integrated Form */
+        .hero-section {
+            position: relative;
+            background: url("https://www.synergybuildinggroup.com.au/wp-content/themes/synergybuilding/img/projects/1.jpg") center/cover no-repeat;
+            padding: 150px 20px 80px; /* Added top padding for navbar */
+            color: var(--synergy-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
+        }
+
+        /* ... rest of your existing CSS ... */
+        /* (I've kept all your original CSS below - just adding the navigation styles above) */
+        
+        /* Header */
+        .header {
+            display: none; /* Hide the original header */
+        }
+
+        /* Hero Section with Integrated Form */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7); /* Slightly darker overlay */
+            z-index: 1;
+        }
+
+        .hero-content-wrapper {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-wrap: wrap; /* Allow content to wrap */
+            gap: 40px;
+            max-width: 1200px;
+            width: 100%;
+            align-items: flex-start; /* Align content to the top */
+        }
+
+        .hero-text-area {
+            flex: 1;
+            min-width: 300px; /* Ensures text area has enough space */
+            text-align: left;
+            padding: 20px 0; /* Add internal padding */
+        }
+
+        .hero-text-area h2 {
+            font-size: 24px;
+            font-weight: 400;
+            margin-bottom: 10px;
+            color: var(--synergy-white);
+        }
+
+        .hero-text-area p {
+            font-size: 18px;
+            margin: 5px 0;
+            color: var(--synergy-white);
+        }
+
+        .hero-text-area strong {
+            font-weight: 600;
+        }
+
+        .hero-text-area h1 {
+            font-family: var(--font-heading);
+            font-size: 48px;
+            margin: 20px 0 15px;
+            font-weight: 800;
+            line-height: 1.2;
+            color: var(--synergy-white);
+        }
+
+        .hero-text-area .desc {
+            font-size: 16px;
+            line-height: 1.6;
+            max-width: 600px; /* Control text width for readability */
+            margin-bottom: 15px;
+        }
+
+        .hero-text-area .cta-button {
+            display: inline-block;
+            margin-top: 25px;
+            background: var(--synergy-light-blue); /* Blue button */
+            color: var(--synergy-white);
+            padding: 14px 30px;
+            font-weight: 600;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            font-family: var(--font-heading);
+        }
+
+        .hero-text-area .cta-button:hover {
+            background: #1a4373; /* Darker blue on hover */
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .hero-text-area .note {
+            margin-top: 15px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Form Styling within Hero */
+        .hero-form-box {
+            flex: 0 0 400px; /* Fixed width for the form on desktop */
+            background: var(--synergy-white);
+            padding: 30px; /* Reduced padding */
+            border-radius: 8px;
+            text-align: left;
+            color: var(--synergy-dark-gray);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            position: sticky; /* Make form sticky if it's tall */
+            top: 100px; /* Adjust sticky position for navbar */
+        }
+
+        .hero-form-box h3 {
+            font-family: var(--font-heading);
+            font-size: 28px;
+            font-weight: 700;
+            text-align: center;
+            color: var(--synergy-blue);
+            margin-bottom: 15px;
+        }
+
+        .hero-form-box p {
+            font-size: 15px;
+            color: var(--synergy-dark-gray);
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .hero-form-box label {
+            font-weight: 600;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            display: block;
+            color: var(--synergy-dark-gray);
+            font-size: 15px;
+        }
+
+        .hero-form-box input[type="text"],
+        .hero-form-box input[type="email"] {
+            width: calc(100% - 20px); /* Adjust for padding */
+            padding: 10px; /* Reduced padding */
+            margin-bottom: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 15px;
+            background-color: var(--synergy-white);
+            color: var(--synergy-dark-gray);
+        }
+
+        .hero-form-box .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px; /* Reduced gap */
+            margin-top: 8px;
+            margin-bottom: 15px;
+        }
+
+        .hero-form-box .checkbox-group label {
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            margin-top: 0;
+            margin-bottom: 0;
+            color: var(--synergy-dark-gray);
+            font-size: 15px;
+        }
+
+        .hero-form-box .checkbox-group input[type="checkbox"] {
+            transform: scale(1.1); /* Slightly smaller checkbox */
+            margin: 0;
+            accent-color: var(--synergy-blue);
+        }
+
+        .hero-form-box .submit-btn {
+            background: var(--synergy-blue); /* Synergy blue button */
+            color: var(--synergy-white);
+            padding: 12px 25px; /* Reduced padding */
+            border: none;
+            border-radius: 4px;
+            margin-top: 20px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            display: block;
+            width: 100%;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            font-family: var(--font-heading);
+        }
+
+        .hero-form-box .submit-btn:hover {
+            background: var(--synergy-light-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+
+        /* Rebuild Section */
+        .rebuild-section {
+            background: var(--synergy-white);
+            color: var(--synergy-dark-gray);
+            padding: 60px 20px;
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .rebuild-text {
+            flex: 1;
+            min-width: 350px;
+            padding: 0 20px;
+        }
+
+        .rebuild-text h2 {
+            font-family: var(--font-heading);
+            font-size: 36px;
+            margin-bottom: 15px;
+            font-weight: 700;
+            color: var(--synergy-blue);
+        }
+
+        .rebuild-text p {
+            margin-bottom: 1rem;
+            font-size: 17px;
+            color: var(--synergy-dark-gray);
+        }
+
+        .rebuild-text strong {
+            display: block;
+            margin: 1.5rem 0 0.5rem;
+            font-weight: 700;
+            color: var(--synergy-light-blue);
+            font-size: 19px;
+        }
+
+        .rebuild-img {
+            flex: 1;
+            min-width: 450px;
+        }
+
+        .rebuild-img img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .divider {
+            border-top: 2px solid var(--synergy-light-blue);
+            margin: 1rem 0 2rem;
+            width: 60px;
+        }     
+        
+        /* Why Homeowners Choose Synergy Section */
+        .why-synergy-section {
+            background: var(--synergy-white);
+            padding: 60px 20px;
+            color: var(--synergy-dark-gray);
+        }
+
+        .why-synergy-section h2.section-title {
+            font-family: var(--font-heading);
+            text-align: center;
+            font-size: 40px;
+            margin-bottom: 15px;
+            font-weight: 800;
+            color: var(--synergy-blue);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .why-synergy-section h2.section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--synergy-light-blue);
+        }
+
+        .why-synergy-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-top: 40px;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .why-synergy-content img {
+            flex: 1;
+            min-width: 350px;
+            max-width: 50%; /* Adjust for flexible image sizing */
+            border-radius: 8px;
+            object-fit: cover;
+            height: 350px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .why-synergy-content .text {
+            flex: 1;
+            min-width: 350px;
+            max-width: 50%;
+            color: var(--synergy-dark-gray);
+            font-size: 17px;
+            line-height: 1.7;
+            padding-top: 20px; /* Align text with top of image */
+        }
+
+        .info-block {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            background: var(--synergy-white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .info-text-wrapper {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            color: var(--synergy-dark-gray);
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .info-item i {
+            font-size: 28px;
+            color: var(--synergy-light-blue);
+            margin-top: 3px;
+            min-width: 35px;
+            text-align: center;
+        }
+
+        .info-item p {
+            margin: 0;
+            color: var(--synergy-dark-gray);
+            font-size: 17px;
+            line-height: 1.6;
+        }
+
+        .info-item strong {
+            color: var(--synergy-blue);
+            font-size: 20px;
+            display: block;
+            margin-bottom: 5px;
+            font-family: var(--font-heading);
+            font-weight: 600;
+        }
+
+        .info-block img {
+            flex: 1;
+            min-width: 300px;
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Call to Action (CTA) Section */
+        .cta-section {
+            background: linear-gradient(rgba(10, 46, 84, 0.85), rgba(10, 46, 84, 0.85)), url('https://www.synergybuildinggroup.com.au/wp-content/themes/synergybuilding/img/projects/4.jpg') center/cover no-repeat fixed; /* Fixed for parallax */
+            color: var(--synergy-white);
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .cta-section h1 {
+            font-family: var(--font-heading);
+            font-size: 42px;
+            margin-bottom: 20px;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .cta-section p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .cta-section .cta-button-secondary {
+            padding: 16px 35px;
+            background: var(--synergy-light-blue);
+            color: var(--synergy-white);
+            border-radius: 5px;
+            font-weight: 700;
+            font-size: 18px;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            font-family: var(--font-heading);
+        }
+
+        .cta-section .cta-button-secondary:hover {
+            background: #1a4373;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Footer (Synergy Website Style) */
+        footer {
+            background: var(--synergy-black); /* Dark footer background */
+            color: var(--synergy-white);
+            padding: 60px 20px 30px;
+            font-family: var(--font-body);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 250px; /* Minimum width for columns */
+        }
+
+        .footer-col h4 {
+            font-family: var(--font-heading);
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--synergy-white);
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 40px;
+            height: 2px;
+            background-color: var(--synergy-light-blue);
+        }
+
+        .footer-col p, .footer-col ul {
+            font-size: 15px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 15px;
+        }
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        .footer-col ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: color 0.3s ease;
+        }
+        .footer-col ul li a:hover {
+            color: var(--synergy-light-blue);
+        }
+        .footer-col .contact-info p {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .footer-col .contact-info i {
+            color: var(--synergy-light-blue);
+            font-size: 18px;
+            margin-top: 3px;
+        }
+
+        .footer-social-icons {
+            margin-top: 20px;
+            display: flex;
+            gap: 12px;
+        }
+
+        .footer-social-icons a {
+            color: var(--synergy-white);
+            font-size: 20px;
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social-icons a:hover {
+            background-color: var(--synergy-light-blue);
+            border-color: var(--synergy-light-blue);
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            font-size: 14px;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Our Process Section */
+        .process-section {
+            background-color: var(--synergy-black);
+            color: var(--synergy-white);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .process-section h2 {
+            font-family: var(--font-heading);
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--synergy-white);
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .process-section h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background-color: var(--synergy-light-blue);
+        }
+
+        .process-grid {
+            display: flex;
+            justify-content: space-between;
+            gap: 25px;
+            padding-top: 20px;
+        }
+
+        .process-step-card {
+            background: #222;
+            padding: 25px 15px;
+            border-radius: 6px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            flex: 1;
+        }
+
+        .process-step-card:hover {
+            transform: translateY(-5px);
+            background-color: #444;
+        }
+
+        .process-step-card .image-container {
+            margin-bottom: 15px;
+            height: 80px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .process-step-card .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+
+        .process-step-card h3 {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--synergy-white);
+            margin-bottom: 10px;
+        }
+
+        .process-step-card p {
+            font-size: 14px;
+            color: #ccc;
+            flex-grow: 1;
+            line-height: 1.5;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-section {
+                padding: 140px 20px 60px; /* Adjusted for navbar */
+                min-height: unset;
+            }
+            .hero-content-wrapper {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .hero-text-area {
+                text-align: center;
+                padding: 0;
+            }
+            .hero-text-area h1 {
+                font-size: 40px;
+            }
+            .hero-text-area h2 {
+                font-size: 22px;
+            }
+            .hero-form-box {
+                flex: 0 0 auto;
+                width: 100%;
+                max-width: 450px;
+                margin-top: 40px;
+                position: static;
+                top: auto;
+            }
+
+            .rebuild-text, .rebuild-img {
+                min-width: unset;
+                width: 100%;
+            }
+            .rebuild-text {
+                padding: 0;
+            }
+
+            .process-section h2, .why-synergy-section h2.section-title, .cta-section h1 {
+                font-size: 36px;
+            }
+            .process-section h2::after, .why-synergy-section h2.section-title::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .why-synergy-content img, .why-synergy-content .text, .info-block img, .info-text-wrapper {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+            .info-block {
+                flex-direction: column;
+            }
+            .info-block img {
+                margin-top: 20px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 30px;
+                text-align: center;
+            }
+            .footer-col {
+                min-width: unset;
+                width: 100%;
+            }
+            .footer-col h4 {
+                text-align: center;
+            }
+            .footer-col h4::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .footer-col .contact-info p {
+                justify-content: center;
+            }
+            .footer-social-icons {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--synergy-black);
+                flex-direction: column;
+                padding: 20px 0;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 10px 20px;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .process-grid {
+                flex-wrap: wrap;
+            }
+            
+            .process-step-card {
+                flex: 0 0 calc(50% - 15px);
+                margin-bottom: 25px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .synergy-logo-container {
+                font-size: 24px;
+            }
+            .synergy-logo-lines {
+                font-size: 28px;
+            }
+            .hero-text-area h1 {
+                font-size: 36px;
+            }
+            .hero-text-area h2 {
+                font-size: 20px;
+            }
+            .hero-text-area p {
+                font-size: 16px;
+            }
+            .hero-text-area .cta-button {
+                padding: 12px 25px;
+                font-size: 16px;
+            }
+            .hero-form-box {
+                padding: 25px;
+            }
+            .hero-form-box h3 {
+                font-size: 24px;
+            }
+            .hero-form-box p {
+                font-size: 14px;
+            }
+            .hero-form-box label,
+            .hero-form-box input[type="text"],
+            .hero-form-box input[type="email"],
+            .hero-form-box .checkbox-group label {
+                font-size: 14px;
+            }
+            .hero-form-box .submit-btn {
+                padding: 10px 20px;
+                font-size: 15px;
+            }
+
+            .rebuild-text h2, .process-section h2, .why-synergy-section h2.section-title, .cta-section h1 {
+                font-size: 30px;
+            }
+            .rebuild-text strong, .process-step-card h3, .cta-section p {
+                font-size: 18px;
+            }
+            .rebuild-text p, .process-step-card p, .info-item p, .info-item strong {
+                font-size: 15px;
+            }
+            .process-step-card .image-container img {
+                width: 60px;
+                height: 60px;
+            }
+            .why-synergy-content img, .info-block img {
+                height: 280px;
+            }
+            .footer-col h4 {
+                font-size: 18px;
+            }
+            .footer-col p, .footer-col ul, .footer-bottom {
+                font-size: 13px;
+            }
+            
+            .process-step-card {
+                flex: 0 0 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text-area h1 {
+                font-size: 30px;
+            }
+            .rebuild-text h2, .process-section h2, .why-synergy-section h2.section-title, .cta-section h1 {
+                font-size: 26px;
+            }
+            
+            .synergy-logo-container {
+                font-size: 22px;
+            }
+            
+            .synergy-logo-lines {
+                font-size: 24px;
+            }
+            
+            .synergy-logo-subtext {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-container">
+                <div class="synergy-logo-container">
+                    <span class="synergy-logo-text">SYN</span><span class="synergy-logo-lines">≡</span><span class="synergy-logo-text">RGY</span>
+                </div>
+                <div class="synergy-logo-subtext">Building Group</div>
+            </div>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#why-rebuild">Why Rebuild</a></li>
+                <li><a href="#process">Our Process</a></li>
+                <li><a href="#why-choose">Why Choose Us</a></li>
+                <li><a href="#free-review">Free Review</a></li>
+            </ul>
+            
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section" id="home">
+        <div class="hero-overlay"></div>
+        <div class="hero-content-wrapper container">
+            <div class="hero-text-area">
+                <h2>Love your location but not your home?</h2>
+                <p>Turn your old block into your forever home</p>
+                <p style="margin-bottom: 25px;"><strong>Rebuild in Narrabundah with Confidence</strong></p>
+
+                <h1>Free Site Feasibility<br>Delivered in 48 Hours</h1>
+
+                <p class="desc">
+                    We help Narrabundah homeowners unlock their block’s full potential<br>
+                    with a knockdown-rebuild.
+                </p>
+                <p class="desc">
+                    Streamlined planning, fixed-cost design, and fast council approvals —<br>
+                    all guided by Canberra’s KDR experts.
+                </p>
+                <p class="desc">Trusted by 100+ families to get it right from the start.</p>
+
+                <a href="#form-target" class="cta-button">Book My Free Site Report →</a>
+                <p class="note">No obligation. 100+ Canberra KDRs completed</p>
+            </div>
+
+            <div class="hero-form-box" id="free-review">
+                <h3>Book Your Free Site Feasibility Review</h3>
+                <p>Find out if your Narrabundah block is suitable for knockdown rebuild or dual occupancy – no obligation, just clarity.</p>
+                <form action="#" method="POST">
+                    <label for="fname">First Name</label>
+                    <input type="text" name="fname" id="fname" required>
+
+                    <label for="email">Email *</label>
+                    <input type="email" name="email" id="email" required>
+
+                    <label for="phone">Phone Number</label>
+                    <input type="text" name="phone" id="phone">
+
+                    <label>Stage</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="stage[]" value="Planning"> Planning</label>
+                        <label><input type="checkbox" name="stage[]" value="Design phase"> Design phase</label>
+                        <label><input type="checkbox" name="stage[]" value="DA Approved"> DA Approved</label>
+                    </div>
+
+                    <label>Home Type</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="type[]" value="Single Dwelling"> Single Dwelling</label>
+                        <label><input type="checkbox" name="type[]" value="Dual Occupancy"> Dual Occupancy</label>
+                        <label><input type="checkbox" name="type[]" value="Multi-Generational / Secondary Dwelling"> Multi-Generational / Secondary Dwelling</label>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Submit</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="rebuild-section container" id="why-rebuild">
+        <div class="rebuild-text">
+            <h2>Why Rebuilding Beats Buying Again</h2>
+            <div class="divider"></div>
+            <p>Save on costs, avoid bidding wars, and create a custom home — without leaving the suburb you love</p>
+            <strong>Stay in the Suburb You Love</strong>
+            <p>No need to uproot your life — keep your school zone, neighbours, and routine.</p>
+            <strong>Save on Stamp Duty & Agent Fees</strong>
+            <p>Avoid $40K+ in stamp duty and agent/legal costs when you rebuild, not buy.</p>
+            <strong>Design a Home That Fits Your Life</strong>
+            <p>From dual occupancy to multi-gen living — your design, your lifestyle</p>
+        </div>
+        <div class="rebuild-img">
+            <img src="https://www.synergybuildinggroup.com.au/wp-content/themes/synergybuilding/img/projects/2.jpg" alt="Happy couple planning their home">
+        </div>
+    </section>
+
+   <section class="process-section" id="process">
+    <div class="container">
+        <h2>Our Process</h2>
+        <div class="process-grid">
+            <div class="process-step-card">
+                <div class="image-container">
+                    <img src="https://cdn.pixabay.com/photo/2021/09/06/16/04/magnifying-glass-6601965_1280.jpg" alt="Discover Image">
+                </div>
+                <h3>1. Discover</h3>
+                <p>We start with a personal consultation to understand your goals, vision, and budget. From there, we map out the best path forward with expert advice and clear options.</p>
+            </div>
+
+            <div class="process-step-card">
+                <div class="image-container">
+                    <img src="https://cdn.pixabay.com/photo/2016/11/24/20/30/floor-plan-1857175_1280.jpg" alt="Design Image">
+                </div>
+                <h3>2. Design & Planning</h3>
+                <p>Our design team translates your ideas into detailed plans. We lock in the vision, finalise approvals, and align expectations before we start building.</p>
+            </div>
+
+            <div class="process-step-card">
+                <div class="image-container">
+                    <img src="https://cdn.pixabay.com/photo/2019/02/25/20/13/site-4020496_1280.jpg" alt="Construction Image">
+                </div>
+                <h3>3. Construction</h3>
+                <p>Our trusted builder partners handle construction with quality control, weekly updates, and full transparency throughout the process.</p>
+            </div>
+
+            <div class="process-step-card">
+                <div class="image-container">
+                    <img src="https://cdn.pixabay.com/photo/2016/11/22/19/15/hand-1850120_1280.jpg" alt="Handover Image">
+                </div>
+                <h3>4. Handover & Beyond</h3>
+                <p>Once complete, we walk you through every detail and hand over a home that’s move-in ready. We’re available for any future support you need.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section class="why-synergy-section" id="why-choose">    
+        <h2 class="section-title container">Why Homeowners in Narrabundah Choose Synergy</h2>
+        
+        <div class="why-synergy-content container">
+            <img src="https://www.synergybuildinggroup.com.au/wp-content/themes/synergybuilding/img/slider/1.jpg" alt="Modern Living Space">
+            <div class="text">
+                <p>We're not just builders — we're your design and project delivery team. With deep experience across Canberra's inner south, we help clients get DA approvals, navigate demolition, and build smarter with dual occupancy, multi-gen, or custom homes.</p>
+            </div>
+        </div>
+
+        <div class="info-block container">
+            <div class="info-text-wrapper">
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <strong>Local Knowledge That Saves Time</strong>
+                        <p>We understand Canberra's block types, zoning codes, and fast-track approval pathways.</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                    <div>
+                        <strong>Transparent, Fixed-Price Estimates</strong>
+                        <p>Our detailed cost breakdowns mean no budget blowouts. What we quote is what you pay.</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <i class="fas fa-tools"></i>
+                    <div>
+                        <strong>In-House Design & Construction Team</strong>
+                        <p>Our in-house experts manage both design and construction for full accountability and smoother delivery.</p>
+                    </div>
+                </div>
+            </div>
+
+            <img src="https://www.synergybuildinggroup.com.au/wp-content/themes/synergybuilding/img/slider/2.jpg" alt="Interior with fireplace">
+        </div>
+    </section>
+    
+    <section class="cta-section">
+        <h1>Want to Know What's Possible on Your Block in Narrabundah?</h1>
+        <p>Book your free 48-hour site review. No pressure. No cost. Just clarity.</p>
+        <a href="#free-review" class="cta-button-secondary">Book My Free Site Feasibility Review</a>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>About Us</h4>
+                <p>Synergy Building Group is a Canberra-based construction firm specializing in custom homes and knockdown-rebuild projects. With a focus on quality, transparency, and client satisfaction, we transform your vision into a reality.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Info</h4>
+                <div class="contact-info">
+                    <p><i class="fas fa-phone"></i> <a href="tel:0420264415">0420 264 415</a></p>
+                    <p><i class="fas fa-map-marker-alt"></i> Level 1, 28-36 Ainsworth St, Mawson ACT 2607</p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:info@synergybuildinggroup.com.au">info@synergybuildinggroup.com.au</a></p>
+                </div>
+                <div class="footer-social-icons">
+                    <a href="https://facebook.com/synergybuildinggroup" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com/synergybuildinggroup" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://linkedin.com/company/synergybuildinggroup" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://twitter.com/company/synergybuildinggroup" target="_blank" aria-label="twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="https://www.synergybuildinggroup.com.au/our-process/" target="_blank">Our Process</a></li>
+                    <li><a href="https://www.synergybuildinggroup.com.au/projects/" target="_blank">Projects</a></li>
+                    <li><a href="https://www.synergybuildinggroup.com.au/about-us/" target="_blank">About Us</a></li>
+                    <li><a href="https://www.synergybuildinggroup.com.au/contact/" target="_blank">Contact Us</a></li>
+                    <li><a href="https://www.synergybuildinggroup.com.au/privacy-policy/" target="_blank">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; <span id="current-year"></span> Synergy Building Group. All rights reserved. <a href="https://www.synergybuildinggroup.com.au/privacy-policy/" target="_blank" style="color: rgba(255, 255, 255, 0.6);">Privacy Policy</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Update current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Navigation functionality
+        const navLinks = document.getElementById('navLinks');
+        const hamburger = document.getElementById('hamburger');
+        const navItems = document.querySelectorAll('.nav-links a');
+        
+        // Toggle mobile menu
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking a link
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Active link highlighting based on scroll position
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.scrollY;
+            
+            document.querySelectorAll('section').forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    navItems.forEach(item => {
+                        item.classList.remove('active');
+                        if (item.getAttribute('href').substring(1) === sectionId) {
+                            item.classList.add('active');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
